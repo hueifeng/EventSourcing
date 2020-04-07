@@ -1550,6 +1550,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "/Users/fenghui/Projects/EventSourcing/EventStore.EF/EventStore.EF.csproj",
       "EventBus >= 1.0.0",
       "MediatR >= 8.0.1",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 8.0.0",
@@ -1574,7 +1575,7 @@
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/fenghui/.nuget/NuGet/NuGet.Config"
+        "/Users/fenghui/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -1587,6 +1588,9 @@
           "projectReferences": {
             "/Users/fenghui/Projects/EventSourcing/EventBus/EventBus.csproj": {
               "projectPath": "/Users/fenghui/Projects/EventSourcing/EventBus/EventBus.csproj"
+            },
+            "/Users/fenghui/Projects/EventSourcing/EventStore.EF/EventStore.EF.csproj": {
+              "projectPath": "/Users/fenghui/Projects/EventSourcing/EventStore.EF/EventStore.EF.csproj"
             }
           }
         }
@@ -1638,5 +1642,16 @@
         "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project '/Users/fenghui/Projects/EventSourcing/EventStore.EF/EventStore.EF.csproj'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "/Users/fenghui/Projects/EventSourcing/EventStore.EF/EventStore.EF.csproj",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }
