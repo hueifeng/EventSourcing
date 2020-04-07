@@ -1,9 +1,0 @@
-/Users/fenghui/Projects/EventSourcing/EventBus/obj/Debug/netcoreapp3.1/EventBus.csprojAssemblyReference.cache
-/Users/fenghui/Projects/EventSourcing/EventBus/obj/Debug/netcoreapp3.1/EventBus.csproj.CoreCompileInputs.cache
-/Users/fenghui/Projects/EventSourcing/EventBus/obj/Debug/netcoreapp3.1/EventBus.AssemblyInfoInputs.cache
-/Users/fenghui/Projects/EventSourcing/EventBus/obj/Debug/netcoreapp3.1/EventBus.AssemblyInfo.cs
-/Users/fenghui/Projects/EventSourcing/EventBus/bin/Debug/netcoreapp3.1/EventBus.deps.json
-/Users/fenghui/Projects/EventSourcing/EventBus/bin/Debug/netcoreapp3.1/EventBus.dll
-/Users/fenghui/Projects/EventSourcing/EventBus/bin/Debug/netcoreapp3.1/EventBus.pdb
-/Users/fenghui/Projects/EventSourcing/EventBus/obj/Debug/netcoreapp3.1/EventBus.dll
-/Users/fenghui/Projects/EventSourcing/EventBus/obj/Debug/netcoreapp3.1/EventBus.pdb
