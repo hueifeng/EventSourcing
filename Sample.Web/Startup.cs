@@ -1,17 +1,13 @@
 using Domain.Commands;
 using Domain.Events;
 using Domain.Queries;
-using EventStore.EF.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Web.Commands;
 using Web.Events;
 
@@ -47,7 +43,6 @@ namespace Web
             services.AddScoped<IEventBus, EventBus>();
             services.AddScoped<INotificationHandler<OrderCreated>, OrderEventHandler>();
             services.AddScoped<IRequestHandler<CreateOrderRequestModel, Unit>, CreateOrderCommandHandler>();
-            services.AddEFStore();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,7 +53,6 @@ namespace Web
                 app.UseDeveloperExceptionPage();
             }
 
-            app.EventDomainDbCreated();
             app.UseHttpsRedirection();
 
             app.UseRouting();

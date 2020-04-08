@@ -14,8 +14,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\EventBus\EventBus.csproj" />
-      <ProjectReference Include="..\EventStore.EF\EventStore.EF.csproj" />
-</ItemGroup>
+    </ItemGroup>
 
 
 </Project>
