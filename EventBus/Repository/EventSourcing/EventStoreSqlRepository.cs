@@ -1,24 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using Domain.Context;
 
 namespace Domain.Repository.EventSourcing
 {
     public class EventStoreSqlRepository : IEventStoreRepository
     {
-        public IList<string> All(Guid aggregateId)
+        private readonly EventStoreSQLContext _context;
+
+        public EventStoreSqlRepository(EventStoreSQLContext context)
         {
-            throw new NotImplementedException();
+            this._context = context;
+        }
+
+        public IList<StoredEvent> All(Guid aggregateId)
+        {
+            return (from e in _context.StoredEvent where e.AggregateId == aggregateId.ToString() select e).ToList();
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _context.Dispose();
         }
 
-        public void Store(string data)
+        public void Store(StoredEvent data)
         {
-            throw new NotImplementedException();
+            _context.StoredEvent.Add(data);
+            _context.SaveChanges();
+
         }
     }
 }

@@ -8,14 +8,16 @@ namespace Web.Events
         IEventHandler<OrderCreated>
     {
         private readonly IEventStore _eventStore;
-
-        public OrderEventHandler(IEventStore eventStore)
+        private readonly IEventBus _bus;
+        public OrderEventHandler(IEventStore eventStore,IEventBus bus)
         {
             this._eventStore = eventStore;
+            this._bus = bus;
         }
         public Task Handle(OrderCreated notification, CancellationToken cancellationToken)
         {
-            _eventStore.SaveAsync(notification);
+            //_eventStore.SaveAsync(notification);
+            _bus.RaiseEvent(notification);
              return Task.CompletedTask;
         }
     }
