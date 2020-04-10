@@ -28,21 +28,13 @@ namespace Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-          //  services.AddDistributedMemoryCache();
-            // services.AddStackExchangeRedisCache(options =>
-            // {
-            //     options.Configuration = "localhost";
-            //     options.InstanceName = "SampleInstance";
-            // });
             services.AddScoped<IEventBus,EventBus>();
             services.AddScoped<IEventStore,SqlEventStore>();
             services.AddScoped<IEventStoreRepository,EventStoreSqlRepository>();
-            services.AddDbContext<EventStoreSQLContext>(options =>
+            services.AddDbContext<EventStoreSQLContext>(options => 
                 options.UseMySql("server=39.108.58.66;database=ctrlframework;uid=ctrlframework;pwd=zzcfyE6YpGa3JLhZ;charset='utf8';SslMode = none;"));
             services.AddScoped<IMediator, Mediator>();
             services.AddTransient<ServiceFactory>(sp => t => sp.GetService(t));
-                //  services.AddMediatR(Assembly.GetExecutingAssembly());
-          //  services.AddScoped(typeof(IEventStore),typeof(EventStore));
             services.AddScoped<ICommandBus, CommandBus>();
             services.AddScoped<IQueryBus, QueryBus>();
             services.AddScoped<IEventBus, EventBus>();

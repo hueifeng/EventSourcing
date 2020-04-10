@@ -5,10 +5,9 @@ namespace Domain
     public class StoredEvent
     {
         public string Id { get; set; }
-        public string AggregateId { get; set; }
-        public string MessageType { get; set; }
+        public Guid AggregateId { get; set; }
+        public string Type { get; set; }
         public string Data { get; set; }
-        public string User { get; set; }
-        public DateTime Timestamp { get; private set; }
+        public DateTime Timestamp { get; set; }
     }
 }

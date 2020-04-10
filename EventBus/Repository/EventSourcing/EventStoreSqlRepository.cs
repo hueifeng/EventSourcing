@@ -16,7 +16,7 @@ namespace Domain.Repository.EventSourcing
 
         public IList<StoredEvent> All(Guid aggregateId)
         {
-            return (from e in _context.StoredEvent where e.AggregateId == aggregateId.ToString() select e).ToList();
+            return (from e in _context.StoredEvent where e.AggregateId == aggregateId select e).ToList();
         }
 
         public void Dispose()

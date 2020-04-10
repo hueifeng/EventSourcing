@@ -1,3 +1,4 @@
+using System;
 using Domain;
 using Web.Events;
 
@@ -10,7 +11,7 @@ namespace Web.Domain
         public Order(string id)
         {
             this.Id = id;
-            Append(new OrderCreated(id,"remak"));
+            Append(new OrderCreated(Guid.NewGuid(), id,"remark"));
         }
     }
 }
