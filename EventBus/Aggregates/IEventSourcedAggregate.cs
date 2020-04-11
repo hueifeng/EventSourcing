@@ -1,10 +1,6 @@
-using System.Collections.Generic;
-using Domain.Events;
-
-namespace Domain
+namespace Domain.Aggregates
 {
     public interface IEventSourcedAggregate: IAggregates
     {
-        Queue<IEvent> PendingEvents { get; }
     }
 }

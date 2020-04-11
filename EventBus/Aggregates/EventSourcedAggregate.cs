@@ -1,23 +1,31 @@
+using Domain.Events;
 using System;
 using System.Collections.Generic;
-using Domain.Events;
 
-namespace Domain
+namespace Domain.Aggregates
 {
-    public abstract class EventSourcedAggregate: IEventSourcedAggregate
+    public class EventSourcedAggregate: IEventSourcedAggregate
     {
-        public Guid Id { get; protected set; }
+        public Guid Id { get;protected set;}
+        public Queue<Event> PendingEvents { get; private set; }
 
-        public Queue<IEvent> PendingEvents { get; private set; }
+        public int Version { get; protected set; }
 
         protected EventSourcedAggregate()
         {
-            PendingEvents = new Queue<IEvent>();
+            PendingEvents = new Queue<Event>();
+        }
+        protected void Dequeue()
+        {
+            PendingEvents.Dequeue();
         }
 
-        protected void Append(IEvent @event)
+
+        protected void Enqueue(Event @event)
         {
+            Version++;
             PendingEvents.Enqueue(@event);
         }
+
     }
 }

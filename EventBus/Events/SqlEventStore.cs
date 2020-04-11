@@ -1,6 +1,6 @@
-using System;
 using Domain.Repository.EventSourcing;
-using System.Text.Json;
+using Newtonsoft.Json;
+using System;
 
 namespace Domain.Events
 {
@@ -12,15 +12,16 @@ namespace Domain.Events
             this._eventStoreRepository = eventStoreRepository;
         }
 
-        public void SaveAsync<T>(T theEvent) where T : IEvent
+        public void SaveAsync<T>(T theEvent,int version) where T : Event
         {
-            var serializedData = JsonSerializer.Serialize(theEvent);
-            var storedEvent = new StoredEvent()
+            var serializedData = JsonConvert.SerializeObject(theEvent);
+            var storedEvent = new StoredEvent
             {
                 Data = serializedData,
                 Id = Guid.NewGuid().ToString(),
                 Type = theEvent.GetType().AssemblyQualifiedName,
                 Timestamp = DateTime.Now,
+                Version = version,
                 AggregateId = theEvent.AggregateId
             };
             _eventStoreRepository.Store(storedEvent);

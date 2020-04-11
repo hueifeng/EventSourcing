@@ -3,29 +3,29 @@ using MediatR;
 
 namespace Domain.Events
 {
-    public class EventBus:IEventBus
+    public class EventBus : IEventBus
     {
         private readonly IMediator _mediator;
         private readonly IEventStore _eventStore;
-        
-        public EventBus(IMediator mediator,IEventStore eventStore)
+
+        public EventBus(IMediator mediator, IEventStore eventStore)
         {
             _mediator = mediator;
             _eventStore = eventStore;
         }
-        public async Task Publish<TEvent>(params TEvent[] events) where TEvent : IEvent
+        public Task Publish<TEvent>(params TEvent[] events)
         {
+            var i = 0;
             foreach (var @event in events)
             {
-                await _mediator.Publish(@event);
+                _mediator.Publish(@event);
+                if (@event is Event eEvent)
+                {
+                    _eventStore.SaveAsync(eEvent,i++);
+                }
             }
+            return Task.CompletedTask;
         }
-        
-        public Task RaiseEvent<TEvent>(TEvent @event) where TEvent : IEvent
-        {
-             _eventStore.SaveAsync(@event);
-             return Task.CompletedTask;
-             //return Publish(@event);
-        }
+
     }
 }

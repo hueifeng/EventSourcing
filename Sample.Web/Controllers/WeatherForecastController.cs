@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Domain.Commands;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Web.Events;
 
 namespace Web.Controllers
 {
